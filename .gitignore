@@ -1,0 +1,9 @@
+*.pyc
+.idea/
+*.tmp
+*.bak
+*.sqlite
+*.sqlite3
+setup.py
+*~
+*.~lock*

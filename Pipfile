@@ -1,0 +1,6 @@
+[packages]
+django = "*"
+factory-boy = "*"
+
+[requires]
+python_version = "3.6"
