@@ -13,3 +13,8 @@ class PageListView(generics.ListAPIView):
     serializer_class = PageSerializer
     pagination_class = PagePagination
     queryset = Page.objects.all().order_by('id')
+
+
+class PageDetailView(generics.RetrieveAPIView):
+    serializer_class = PageSerializer
+    queryset = Page.objects.all()

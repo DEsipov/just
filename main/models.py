@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class BaseModel(models.Model):
@@ -86,3 +87,6 @@ class Page(BaseModel):
         'main.basecontent',
         verbose_name="Контент"
     )
+
+    def get_absolute_url(self):
+        return reverse('api-page-detail', args=[str(self.id)])
