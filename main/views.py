@@ -2,7 +2,7 @@ from rest_framework import generics
 from rest_framework.pagination import PageNumberPagination
 
 from .models import Page
-from .serializers import PageSerializer
+from .serializers import PageSerializer, PageDetailSerializer
 
 
 class PagePagination(PageNumberPagination):
@@ -16,5 +16,5 @@ class PageListView(generics.ListAPIView):
 
 
 class PageDetailView(generics.RetrieveAPIView):
-    serializer_class = PageSerializer
+    serializer_class = PageDetailSerializer
     queryset = Page.objects.all()

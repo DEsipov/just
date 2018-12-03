@@ -21,10 +21,15 @@ class BaseModel(models.Model):
 
 class BaseContent(BaseModel):
     """
-    Общий класс контента
+    Общий класс контента. Создастся табличка в БД, будет хранить ссылки на потомком.
+    Сделать абстрактной нельзя, ибо для M2M не подойдет.
     """
     counter = models.PositiveIntegerField(
         verbose_name="Счетчик просмотров",
+        default=0
+    )
+    weight = models.PositiveIntegerField(
+        verbose_name="Вес, для сортировки",
         default=0
     )
 
@@ -85,7 +90,8 @@ class Page(BaseModel):
 
     content = models.ManyToManyField(
         'main.basecontent',
-        verbose_name="Контент"
+        verbose_name="Контент",
+        blank=True,
     )
 
     def get_absolute_url(self):

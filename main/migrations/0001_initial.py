@@ -16,6 +16,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('title', models.CharField(db_index=True, max_length=255, verbose_name='Заголовок')),
                 ('counter', models.PositiveIntegerField(default=0, verbose_name='Счетчик просмотров')),
+                ('weight', models.PositiveIntegerField(default=0, verbose_name='Вес, для сортировки'))
             ],
             options={
                 'abstract': False,
