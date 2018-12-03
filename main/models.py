@@ -28,6 +28,8 @@ class BaseContent(BaseModel):
         verbose_name="Счетчик просмотров",
         default=0
     )
+    # Задает порядок выдачи в API объектов, привязанных к странице. Чем больше значение,
+    # тем выше будет позиция.
     weight = models.PositiveIntegerField(
         verbose_name="Вес, для сортировки",
         default=0

@@ -56,4 +56,4 @@ class PageDetailSerializer(serializers.HyperlinkedModelSerializer):
             return TextSerializer(content.text).data
 
     def get_content(self, obj):
-        return [self.get_content_data(content) for content in obj.content.all().order_by('weight')]
+        return [self.get_content_data(content) for content in obj.content.all().order_by('-weight')]
