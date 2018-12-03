@@ -1,6 +1,7 @@
 [packages]
 django = "*"
 factory-boy = "*"
+djangorestframework = "*"
 
 [requires]
 python_version = "3.6"

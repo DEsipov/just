@@ -76,6 +76,8 @@ class Text(BaseContent):
 
 
 class Page(BaseModel):
+    PAGE_SIZE = 2
+
     class Meta:
         verbose_name = "Страница"
         verbose_name_plural = "Страницы"
