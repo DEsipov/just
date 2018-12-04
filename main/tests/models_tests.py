@@ -1,23 +1,23 @@
 #!-*-coding:utf-8-*-
 from django.test import TestCase
 
-from ..models import Video, Audio, Text
 from ..factories import PageFactory, VideoFactory, AudioFactory, TextFactory
 
 
 class ModelTestCase(TestCase):
-    def test_page(self):
-        page = PageFactory()
+    def setUp(self):
+        self.page = PageFactory()
+        self.audio = AudioFactory()
         video = VideoFactory()
-        audio = AudioFactory()
         text = TextFactory()
-        page.content.add(video)
-        page.content.add(audio)
-        page.content.add(text)
-        for content in page.content.all():
-            if isinstance(content, Video):
-                assert content.counter == 0
-            if isinstance(content, Audio):
-                assert content.bitrate == audio.bitrate
-            if isinstance(content, Text):
-                assert content.txt == text.txt
+        self.page.content.add(video, self.audio, text)
+
+    def test_smoke(self):
+        for content in self.page.content.all():
+            assert content.counter == 0
+            if hasattr(content, 'audio'):
+                assert content.audio.bitrate == self.audio.bitrate
+
+    def test_increment_counter(self):
+        self.page.increment_counter()
+        assert self.page.content.filter(counter=1).count() == 3
