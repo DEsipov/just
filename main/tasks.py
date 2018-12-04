@@ -15,10 +15,3 @@ def update_counter(page_id):
         logging.warning(f"TimeOut for Page {page_id} ")
     except Page.DoesNotExist:
         logging.warning(f"Not exists Page {page_id} ")
-
-
-@app.task()
-def test():
-    # TODO убрать
-    msg = '*' * 30
-    logging.error(msg)
