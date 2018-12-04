@@ -1,0 +1,6 @@
+Django
+psycopg2
+factory-boy
+djangorestframework
+celery
+redis==2.10.6
