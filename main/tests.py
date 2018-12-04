@@ -5,6 +5,7 @@ from django.test import TestCase, Client, override_settings
 from django.urls import reverse
 
 from main.factories import PageFactory, AudioFactory, VideoFactory, TextFactory
+from main.models import Page
 
 
 class ModelsTestCase(TestCase):
@@ -45,8 +46,8 @@ class PageViewTestCase(TestCase):
         assert resp.status_code == 200
 
         data = json.loads(resp.content)
-        assert data['count'] == 2
-        expected = [self.page1.title, self.page2.title]
+        assert data['count'] == Page.objects.count()
+        expected = [x.title for x in Page.objects.all()[:Page.PAGE_SIZE]]
         results = [x['title'] for x in data['results']]
         assert set(results) == set(expected)
 
