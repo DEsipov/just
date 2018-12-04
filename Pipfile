@@ -2,6 +2,8 @@
 django = "*"
 factory-boy = "*"
 djangorestframework = "*"
+celery = "*"
+redis = "==2.10.6"
 
 [requires]
 python_version = "3.6"

@@ -1,5 +1,7 @@
 from django.db import models
+from django.db.models import F
 from django.urls import reverse
+from django.db import transaction
 
 
 class BaseModel(models.Model):
@@ -98,3 +100,11 @@ class Page(BaseModel):
 
     def get_absolute_url(self):
         return reverse('api-page-detail', args=[str(self.id)])
+
+    @transaction.atomic()
+    def increment_counter(self):
+        """
+        Инкрементируем счетчик контента страницы.
+        :return:
+        """
+        self.content.update(counter=F('counter') + 1)
