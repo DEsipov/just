@@ -22,5 +22,5 @@ class PageDetailView(generics.RetrieveAPIView):
 
     def get_object(self):
         page = super().get_object()
-        update_counter(page.id)
+        update_counter.delay(page.id)
         return page
